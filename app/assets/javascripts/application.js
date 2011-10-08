@@ -7,3 +7,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+jQuery.ajaxSetup({
+ 'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
+});
+
+
+$(document).ready(function(){
+
+   $('.voting_arrow').click(function() {
+       var entryId = this.id;
+       $.post('/contest/vote', {id: entryId },null, "script")
+           .success(function(data) {
+            $('#'+entryId+'voteCount').html(data);
+           })
+
+           .error(function() { alert("An error occurred trying to count your vote.  Please try again.");});
+   });
+});

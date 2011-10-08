@@ -30,4 +30,11 @@ class ContestsController < ApplicationController
   def edit
   end
 
+  def vote
+    @entry = Entries.find(params[:id])
+    @entry.votes = @entry.votes + 1
+    @entry.save
+    render :json => @entry.votes
+  end
+
 end

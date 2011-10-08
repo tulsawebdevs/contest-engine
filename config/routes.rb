@@ -6,6 +6,7 @@ ContestEngine::Application.routes.draw do
   match 'contest/:contest_id/enter' => 'entries#new', :via => :get
   match 'contest/:id' => 'contests#show', :via => :get
   match 'contest/:id/:title' => 'contests#show', :via => :get
+  match 'contest/vote' => 'contests#vote', :via => :post
 
   match 'entry' => 'entries#create', :via => :post
 

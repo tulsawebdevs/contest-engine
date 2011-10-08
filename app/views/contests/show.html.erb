@@ -2,21 +2,25 @@
 <br />
 <div class="description"><%= @contest.description %></div>
 <br />
-<% if DateTime.now < @contest.end_date then %> 
-  This contest is still active and runs from <%= @contest.start_date.strftime("%m/%d/%Y") %> to <%= @contest.end_date.strftime("%m/%d/%Y") %>
-<%else %>
-  This contest is complete.  It ran from <%= @contest.start_date.strftime("%m/%d/%Y") %> to <%= @contest.end_date.strftime("%m/%d/%Y") %>
+<% if DateTime.now < @contest.end_date then %>
+    This contest is still active and runs from <%= @contest.start_date.strftime("%m/%d/%Y") %> to <%= @contest.end_date.strftime("%m/%d/%Y") %>
+    <%= link_to "Enter Contest", "/contest/#{@contest.id}/enter" %>
+  <%else %>
+    This contest is complete.  It ran from <%= @contest.start_date.strftime("%m/%d/%Y") %> to <%= @contest.end_date.strftime("%m/%d/%Y") %>
 <%end%>
 <br />
 <%= link_to "Rules", "/pdf/contest/#{@contest.pdf}" %>
 <br />
-<br />
 All Entries for Contest number <%=	 @contest.id%>:<br />
 <div class="gallery">
-  <% @contest.entries.each do |e| %>
-    <%= e.title %> <a href="<%= e.image %>"><img src="/image/entry/<%= e.image %>" class="thumbnail"></a>
-    Score: <%= e.votes %>
-    <br /><br />
-  <% end %>
-  <%= link_to "Enter Contest", "/contest/#{@contest.id}/enter" %>
+<% @contest.entries.each do |e| %>
+      <% if (DateTime.now < @contest.end_date ) %>
+        <img src="/arrow-up.png" id="<%=e.id%>" class="voting_arrow" title="Vote for this!">
+        <div class="vote_text">Vote Up!</div>
+        Current Score: <div id="<%=e.id%>voteCount"><%= e.votes %></div>
+      <% end %>
+      <a href="<%= e.image %>"><img src="<%= e.image %>" class="thumbnail" title="<%= e.title %>"></a>
+
+  <br /><br />
+<% end %>
 </div>
