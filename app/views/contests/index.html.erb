@@ -1,0 +1,8 @@
+<h1>Contests#index</h1>
+<p>Find me in app/views/contests/index.html.erb</p>
+
+<%= @contests.each do |c| %>
+  <div>
+    <%= link_to c.title, "/contest/#{c.id}/#{c.title.gsub(' ', '-')}" %>
+  </div>
+<% end %>

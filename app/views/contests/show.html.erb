@@ -1,0 +1,9 @@
+<%= @contest.title %><br />
+<%= @contest.description %><br />
+<%= @contest.start_date %> - <%= @contest.end_date %>
+
+<% @contest.entries.each do |e| %>
+  <div>
+    <%= e.votes %> - <%= e.title %>
+  </div>
+<% end %>
