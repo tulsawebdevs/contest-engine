@@ -1,10 +1,17 @@
-<h1>Entries#new</h1>
-<p>Find me in app/views/entries/new.html.erb</p>
+<div>
+  <ul class="breadcrumb">
+    <li><%= link_to @contest.title, "/contest/#{@contest.id}/#{@contest.title.gsub('', '-').downcase}" %></li>
+    <li>></li>
+    <li>entry form</li>
+  </ul>
+</div>
+<div class="form">
 <%= form_tag("/entry", :multipart => "true") do %>
   Title: <input type="text" name="title" />
   Description: <input type="text" name="description" />
   Proposal <%= file_field_tag "proposal", :accept => 'application/pdf', :class => "upload" %>
   Image <%= file_field_tag "image", :accept => 'image/png,image/gif,image/jpeg', :class => "upload"%>
-  <%= hidden_field_tag "contest_id", params[:contest_id] %>
+  <%= hidden_field_tag "contest_id", @contest.id %>
   <%= submit_tag "Submit" %>
 <% end %>
+</div>

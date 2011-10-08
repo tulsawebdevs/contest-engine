@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Fab Lab Contests - Powered by Contest Engine</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Fab Lab Contests - Powered by Contest Engine</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="menu">
+      <%= link_to "Contests", "/" %>
+    </div>
+      <%= yield %>
+    </div>
 
-<%= yield %>
-
-</body>
+  </body>
 </html>
 

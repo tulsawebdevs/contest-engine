@@ -2,7 +2,7 @@
 <p>Find me in app/views/contests/index.html.erb</p>
 
 <%= @contests.each do |c| %>
-  <div>
+  <div class="<%= c.active_contest? ? "active-contest" : "inactive-contest" %>">
     <%= link_to c.title, "/contest/#{c.id}/#{c.title.gsub(' ', '-')}" %>
   </div>
 <% end %>

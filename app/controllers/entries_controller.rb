@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
   end
 
   def new
-    @entry = Entries.new
+    @contest = Contest.find(params[:contest_id]) 
   end
 
   def create
