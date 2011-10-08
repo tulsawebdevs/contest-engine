@@ -2,7 +2,6 @@
 <br />
 <div class="description"><%= @contest.description %></div>
 <br />
-<<<<<<< HEAD
 <% if @contest.active_contest? then %> 
     This contest is still active and runs from <%= @contest.start_date.strftime("%m/%d/%Y") %> to <%= @contest.end_date.strftime("%m/%d/%Y") %>
     <%= link_to "Enter Contest", "/contest/#{@contest.id}/enter" %>
