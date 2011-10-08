@@ -10,8 +10,17 @@ class EntriesController < ApplicationController
     entry = Entries.new
     entry.title = params[:title]
     entry.description = params[:description]
-    entry.image = nil
-    entry.proposal = nil
+    if(!params[:images].nil?)
+      entry.image = Entries.save_image(params[:image])
+    else
+      entry.image = nil
+    end
+
+    if(!params[:proposal].nil?)
+      entry.proposal = Entries.save_proposal(params[:proposal]) 
+    else
+      entry.proposal = nil
+    end
     entry.votes = 0
     entry.approval = false
     entry.contest_id = params[:contest_id]

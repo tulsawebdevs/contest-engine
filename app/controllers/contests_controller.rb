@@ -20,8 +20,6 @@ class ContestsController < ApplicationController
     contest.end_date = params[:end_date]
     contest.sponsor_id = nil
 
-
-
     if(contest.save)
       redirect_to "/contest/#{contest.id}/#{contest.title.gsub(' ', '-').downcase}"
     else

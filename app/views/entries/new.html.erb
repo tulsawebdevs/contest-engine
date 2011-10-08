@@ -1,10 +1,10 @@
 <h1>Entries#new</h1>
 <p>Find me in app/views/entries/new.html.erb</p>
-<%= form_tag("/entry") do %>
+<%= form_tag("/entry", :multipart => "true") do %>
   Title: <input type="text" name="title" />
   Description: <input type="text" name="description" />
-  Proposal
-  image
+  Proposal <%= file_field_tag "proposal", :accept => 'application/pdf', :class => "upload" %>
+  Image <%= file_field_tag "image", :accept => 'image/png,image/gif,image/jpeg', :class => "upload"%>
   <%= hidden_field_tag "contest_id", params[:contest_id] %>
   <%= submit_tag "Submit" %>
 <% end %>
