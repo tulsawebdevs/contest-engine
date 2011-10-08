@@ -8,6 +8,10 @@ class Contest < ActiveRecord::Base
     Entries.where("contest_id = ?", self.id)
   end
 
+  def phases
+    Phases.where("contest_id = ?", self.id)
+  end
+
   def self.save_rules(file)
     name = file.original_filename
     directory = "public/pdf/contest"

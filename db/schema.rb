@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111008154559) do
+ActiveRecord::Schema.define(:version => 20111008222636) do
 
   create_table "contests", :force => true do |t|
     t.string   "title"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20111008154559) do
     t.integer  "votes"
     t.boolean  "approval"
     t.integer  "contest_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "phases", :force => true do |t|
+    t.integer  "contest_id"
+    t.text     "title"
+    t.datetime "end_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
