@@ -8,6 +8,8 @@
         <%else %>
              This contest is complete.  It ran from <%= @contest.start_date.strftime("%m/%d/%Y") %> to <%= @contest.end_date.strftime("%m/%d/%Y") %>
     <%end%>
+    <br />
+    <%= link_to "Rules", "/pdf/contest/#{@contest.pdf}" %>
 <br />
 <br />
 All Entries for Contest number <%=	 @contest.id%>:<br />

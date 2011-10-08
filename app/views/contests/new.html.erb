@@ -1,7 +1,7 @@
-<%= form_tag("/contest") do %>
+<%= form_tag "/contest", :multipart => true do %>
   title <input type="" name="title" />
   description <input type="text" name="description" />
-  rules 
+  rules <%= file_field_tag "rules", :accept => 'application/pdf', :class => "upload"%>
   sponsor 
   start_date <input type="date" name="start_date" />
   end_date <input type="date" name="end_date" />

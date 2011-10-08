@@ -7,4 +7,24 @@ class Contest < ActiveRecord::Base
   def entries
     Entries.where("contest_id = ?", self.id)
   end
+
+  def self.save_rules(file)
+    name = file.original_filename
+    directory = "public/pdf/contest"
+    # create the file path
+    path = File.join(directory, name)
+    # write the file
+    File.open(path, "wb") { |f| f.write(file.read) }
+    return name
+  end
+
+  def self.save_entry(file)
+    name = file.original_filename
+    directory = "public/pdf/entry"
+    # create the file path
+    path = File.join(directory, name)
+    # write the file
+    File.open(path, "wb") { |f| f.write(file.read) }
+    return name
+  end
 end
