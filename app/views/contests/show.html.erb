@@ -1,11 +1,22 @@
-<%= @contest.title %><br />
-<%= @contest.description %><br />
-<%= @contest.start_date %> - <%= @contest.end_date %>
+<div class="title"> <%= @contest.title %></div>
+<br />
+<div class="description"><%= @contest.description %></div>
+<br />
+<% if (DateTime.now < @contest.end_date )
 
+           %> This contest is still active and runs from <%= @contest.start_date.strftime("%m/%d/%Y") %> to <%= @contest.end_date.strftime("%m/%d/%Y") %>
+        <%else %>
+             This contest is complete.  It ran from <%= @contest.start_date.strftime("%m/%d/%Y") %> to <%= @contest.end_date.strftime("%m/%d/%Y") %>
+    <%end%>
+<br />
+<br />
+All Entries for Contest number <%=	 @contest.id%>:<br />
 <% @contest.entries.each do |e| %>
-  <div>
+  <div class="entry">
+    <img src="<%= e.image %>" class="thumbnail">
     <%= e.votes %> - <%= e.title %>
   </div>
+  <br /><br />
 <% end %>
 
 <%= link_to "Enter Contest", "/contest/#{@contest.id}/enter" %>
