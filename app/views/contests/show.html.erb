@@ -1,27 +1,38 @@
-<div class="title"> <%= @contest.title %></div>
-<br />
-<div class="description"><%= @contest.description %></div>
-<br />
+<h2><span class="contest-title"><%= @contest.title %></span></h2>
+<div class="description">
+  <div class="words">
+    <span class="about-contest">About</span><br />
+    <%= @contest.description %>
+  </div>
+  <div class="rules">
+    <a href='<%= "/pdf/contest/#{@contest.pdf}" %>'><img src="/assets/download.png" /></a><br />
+    <%= link_to "Rules", "/pdf/contest/#{@contest.pdf}" %>
+  </div>
+</div>
 <% if @contest.active_contest? then %> 
-    This contest is still active and runs from <%= @contest.start_date.strftime("%m/%d/%Y") %> to <%= @contest.end_date.strftime("%m/%d/%Y") %>
-    <br />
-    <%= link_to "Enter Contest", "/contest/#{@contest.id}/enter" %>
-  <%else %>
-    This contest is complete.  It ran from <%= @contest.start_date.strftime("%m/%d/%Y") %> to <%= @contest.end_date.strftime("%m/%d/%Y") %>
+  <div class="project-ongoing">
+    This project is still going on. Please feel free to enter:<br />
+    <%= link_to "Enter Contest", "/contest/#{@contest.id}/enter" %> - Registration Ends: <strong>Sometime</strong><br />
+    Total Entrants: <strong><%= @contest.entries.size %></strong>
+  </div>
+<%else %>
+  <div class="completed-project">
+    This Contest is Over. Please feel free to see who the winner is and what they have done. It ended <strong><%= @contest.end_date.strftime("%m/%d/%Y") %></strong>.
+  </div>
 <%end%>
-<br />
-<%= link_to "Rules", "/pdf/contest/#{@contest.pdf}" %>
-<br />
-All Entries for Contest number <%=	 @contest.id%>:<br />
-<div class="gallery">
-<% @contest.entries.each do |e| %>
-      <% if (DateTime.now < @contest.end_date ) %>
-        <img src="/arrow-up.png" id="<%=e.id%>" class="voting_arrow" title="Vote for this!">
-        <div class="vote_text">Vote Up!</div>
-        Current Score: <div id="<%=e.id%>voteCount"><%= e.votes %></div>
-      <% end %>
-      <a href="<%= e.image %>"><img src="<%= e.image %>" class="thumbnail" title="<%= e.title %>"></a>
 
-  <br /><br />
-<% end %>
+<div class="top-sep">
+</div>
+
+<div class="gallery">
+  <% @contest.entries.each do |e| %>
+    <% if (DateTime.now < @contest.end_date ) %>
+      <img src="/arrow-up.png" id="<%=e.id%>" class="voting_arrow" title="Vote for this!">
+      <div class="vote_text">Vote Up!</div>
+      Current Score: <div id="<%=e.id%>voteCount"><%= e.votes %></div>
+    <% end %>
+    <a href="<%= e.image %>"><img src="<%= e.image %>" class="thumbnail" title="<%= e.title %>"></a>
+
+    <br /><br />
+  <% end %>
 </div>

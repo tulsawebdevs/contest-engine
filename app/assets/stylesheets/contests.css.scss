@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .voting_arrow {
     height:75px;
     width:75px;
@@ -40,6 +39,67 @@
     opacity: 1;
 }
 
-.title {
-    font-size:200%;
+.description{
+  margin: 10px 0px 10px 0px;
+  padding: 5px;
+  background-color: #DEF0FF;
+  border: 1px solid #7697B5;
+  border-radius: 5px;
+}
+
+.contest-title{
+  font-size:36px
+}
+
+.description a
+{
+  color: black;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.description .rules
+{
+  margin: 0px 0px 0px 10px;
+  border-right: solid 1px  #7697B5;
+  width: 50px;
+}
+.description .words
+{
+  position: absolute;
+  margin: 0px 0px 0px 70px;
+}
+
+.about-contest
+{
+  font-size: 12px;
+}
+
+.completed-project
+{
+  background-color: #FFB5BC;
+  margin: 10px 0px 10px 0px;
+  padding: 5px 5px 5px 5px;
+  border: 1px solid #DB3949;
+  border-radius: 5px;
+}
+
+.project-ongoing
+{
+  background-color: #C9FFD0;
+  margin: 10px 0px 10px 0px;
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
+  border: 1px solid #63CF70;
+  font-size: 12px;
+}
+
+.top-sep
+{
+  height: 20px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
