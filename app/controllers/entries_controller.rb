@@ -10,7 +10,7 @@ class EntriesController < ApplicationController
     entry = Entries.new
     entry.title = params[:title]
     entry.description = params[:description]
-    if(!params[:images].nil?)
+    if(!params[:image].nil?)
       entry.image = Entries.save_image(params[:image])
     else
       entry.image = nil
