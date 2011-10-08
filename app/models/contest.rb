@@ -30,4 +30,11 @@ class Contest < ActiveRecord::Base
     end
   end
 
+  def can_vote?
+    if active_contest? and Phases.where("title = Voting1").end_date > DateTime.now and Phases.where("title = Submissions").end_date < DateTime.now then
+      return true
+    else
+      return false
+    end
+  end
 end
