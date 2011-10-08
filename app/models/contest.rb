@@ -19,7 +19,7 @@ class Contest < ActiveRecord::Base
   end
 
   def active_contest?
-    if self.end_date < DateTime.now and self.start_date > DateTime.now then
+    if self.end_date > DateTime.now and self.start_date < DateTime.now then
       return true
     else
       return false
