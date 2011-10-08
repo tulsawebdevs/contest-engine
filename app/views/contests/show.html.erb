@@ -11,12 +11,11 @@
 <br />
 <br />
 All Entries for Contest number <%=	 @contest.id%>:<br />
+<div class="gallery">
 <% @contest.entries.each do |e| %>
-  <div class="entry">
-    <img src="<%= e.image %>" class="thumbnail">
-    <%= e.votes %> - <%= e.title %>
-  </div>
+    <%= e.title %> <a href="<%= e.image %>"><img src="<%= e.image %>" class="thumbnail"></a>
+    Score: <%= e.votes %>
   <br /><br />
 <% end %>
-
+</div>
 <%= link_to "Enter Contest", "/contest/#{@contest.id}/enter" %>
