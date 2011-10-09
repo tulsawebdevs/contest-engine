@@ -14,7 +14,7 @@ class ContestsController < ApplicationController
     contest = Contest.new
 
     contest.title = params[:title]
-    contest.description = params[:title]
+    contest.description = params[:description]
     if(!params[:rules].nil?)
       contest.pdf = Contest.save_rules(params[:rules])
     else
