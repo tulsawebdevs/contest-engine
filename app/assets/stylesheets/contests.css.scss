@@ -2,20 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.words
+{
+  word-wrap: break-word;
+}
 .voting_arrow {
-    height:75px;
-    width:75px;
-    float:left;
+    height:50px;
+    width:50px;
 }
 
 .voting_arrow:hover {
     cursor:pointer;
 }
 
-.vote_text
-{
-    valign:bottom;
-}
 .thumbnail {
     height:240px;
     width:320px;
@@ -26,7 +25,6 @@
     -moz-transition-duration: 0.5s; /*Mozilla duration version*/
     -o-transition-duration: 0.5s; /*Opera duration version*/
     opacity: 0.8; /*initial opacity of images*/
-    margin: 0 10px 5px 0; /*margin between images*/
 }
 
 .thumbnail:hover{
@@ -102,4 +100,16 @@
   border-right: 1px solid black;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+}
+
+.count-up
+{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.entry-content
+{
+  position: absolute;
+  margin: 0px 0px 0px 100px;
 }

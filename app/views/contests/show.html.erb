@@ -26,13 +26,21 @@
 
 <div class="gallery">
   <% @contest.entries.each do |e| %>
-    <% if (DateTime.now < @contest.end_date ) %>
-      <img src="/arrow-up.png" id="<%=e.id%>" class="voting_arrow" title="Vote for this!">
-      <div class="vote_text">Vote Up!</div>
-      Current Score: <div id="<%=e.id%>voteCount"><%= e.votes %></div>
-    <% end %>
-    <a href="<%= e.image %>"><img src="<%= e.image %>" class="thumbnail" title="<%= e.title %>"></a>
-
-    <br /><br />
+    <div class="whole-entry">
+      <div class="entry-content">
+        <div>
+          <%= e.title %>
+        </div>
+        <a href="/image/entry/<%= e.image %>"><img src="/image/entry/<%= e.image %>" class="thumbnail" title="<%= e.title %>"></a>
+      </div>
+      <div class="count-up">
+        <div>
+          <% if @contest.active_contest? then %>
+            <img src="/arrow-up.png" id="<%=e.id%>" class="voting_arrow" title="Vote for this!">
+          <% end%>
+        </div>
+        <div id="<%=e.id%>voteCount" class="count-up"><%= e.votes %></div>
+      </div>
+    </div>
   <% end %>
 </div>
